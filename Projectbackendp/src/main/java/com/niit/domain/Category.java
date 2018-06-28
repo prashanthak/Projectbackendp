@@ -6,13 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.niit.dao.CategoryDao;
+
 @Entity
-public class Category {
+public class Category  {
 @Id
 private int cid;
 private String categoryname;
-@OneToMany(mappedBy="category")
-private List<Product>  products;
+//@OneToMany(mappedBy="category")
+//private List<Product>  products;
 public int getCid() {
 	return cid;
 }
@@ -25,10 +27,5 @@ public String getCategoryname() {
 public void setCategoryname(String categoryname) {
 	this.categoryname = categoryname;
 }
-public List<Product> getProducts() {
-	return products;
-}
-public void setProducts(List<Product> products) {
-	this.products = products;
-}
+
 }

@@ -14,7 +14,10 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.domain.Category;
 import com.niit.domain.Product;
+import com.niit.domain.Supplier;
+import com.niit.domain.User;
 
 @Configuration
 @EnableTransactionManagement
@@ -45,10 +48,10 @@ public class AppDBconfig {
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	    sessionBuilder.addProperties(getHibernateProperties());
-//	    sessionBuilder.addAnnotatedClass(Category.class);
+	    sessionBuilder.addAnnotatedClass(Category.class);
 	    sessionBuilder.addAnnotatedClass(Product.class);
-//	    sessionBuilder.addAnnotatedClass(Supplier.class);
-//	    sessionBuilder.addAnnotatedClass(UserDetails.class);
+	    sessionBuilder.addAnnotatedClass(Supplier.class);
+        sessionBuilder.addAnnotatedClass(User.class);
 //	    sessionBuilder.addAnnotatedClass(Cart.class);
 //	    sessionBuilder.addAnnotatedClass(Feedback.class);
 //	    sessionBuilder.addAnnotatedClass(Payment.class);

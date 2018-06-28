@@ -5,8 +5,8 @@ import java.util.List;
 import com.niit.domain.Category;
 
 public interface CategoryDao {
-CategoryDao saveOrUpdateCategory(Category category);
-CategoryDao getCategory(int cid);
+Category saveOrUpdateCategory(Category category);
+Category getCategory(int cid);
 void deleteCategory(int cid);
 List<Category> getAllCategory();
 }

@@ -1,8 +1,5 @@
 package com.niit.Projectbackendp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.dao.ProductDao;

@@ -43,7 +43,7 @@ public int getQuantity() {
 }
 public void setQuantity(int quantity) {
 	this.quantity = quantity;
+}	
 	
-}
 
 }
