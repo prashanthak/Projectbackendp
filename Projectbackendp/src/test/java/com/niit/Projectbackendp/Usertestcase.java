@@ -16,8 +16,8 @@ public static void main(String[] args) {
 	User user=(User)config.getBean("user");
 	
 	UserDao userDao=(UserDao)config.getBean("userDao");
-	user.setId(1);
-	System.out.println(user.getId());
+	
+	System.out.println(user.getEmail());
 	user.setEmail("dgfd@fgtr");
 	user.setPassword("raj1");
 	user.setEnabled(true);

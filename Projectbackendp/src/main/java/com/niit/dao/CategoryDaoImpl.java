@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +39,7 @@ public void deleteCategory(int id) {
 	if(category!=null)
 	session.delete(category);
 }
+@Override
 public List<Category> getAllCategories() {
 	Session session=sessionFactory.getCurrentSession();
 	//HQL - Hibernate Query Language
@@ -50,11 +52,6 @@ public List<Category> getAllCategories() {
 	return categories;
 }
 
-@Override
-public List<Category> getAllCategory() {
-	// TODO Auto-generated method stub
-	return null;
-}
 
 }
 

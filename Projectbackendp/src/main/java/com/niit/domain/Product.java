@@ -1,19 +1,32 @@
 package com.niit.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
-public class Product {
+public class Product implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 int id;
 String name;
 String description;
 double price;
 int quantity;
+@Transient
+MultipartFile pimage;
+public MultipartFile getPimage() {
+	return pimage;
+}
+public void setPimage(MultipartFile pimage) {
+	this.pimage = pimage;
+}
 public int getId() {
 	return id;
 }

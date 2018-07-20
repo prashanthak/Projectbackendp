@@ -10,12 +10,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.domain.Authorities;
+import com.niit.domain.BillingAddress;
+import com.niit.domain.CartItem;
 import com.niit.domain.Category;
+import com.niit.domain.Customer;
+import com.niit.domain.Payment;
 import com.niit.domain.Product;
+import com.niit.domain.ShippingAddress;
 import com.niit.domain.Supplier;
 import com.niit.domain.User;
 
@@ -52,9 +58,13 @@ public class AppDBconfig {
 	    sessionBuilder.addAnnotatedClass(Product.class);
 	    sessionBuilder.addAnnotatedClass(Supplier.class);
         sessionBuilder.addAnnotatedClass(User.class);
-//	    sessionBuilder.addAnnotatedClass(Cart.class);
-//	    sessionBuilder.addAnnotatedClass(Feedback.class);
-//	    sessionBuilder.addAnnotatedClass(Payment.class);
+        sessionBuilder.addAnnotatedClass(Customer.class);
+        sessionBuilder.addAnnotatedClass(BillingAddress.class);
+        sessionBuilder.addAnnotatedClass(ShippingAddress.class);
+        //sessionBuilder.addAnnotatedClass(Authorities.class);
+	    sessionBuilder.addAnnotatedClass(CartItem.class);
+       // sessionBuilder.addAnnotatedClass(Feedback.class);
+	    sessionBuilder.addAnnotatedClass(Payment.class);
 	    System.out.println("Database Connected");
 	    return sessionBuilder.buildSessionFactory();
 	    

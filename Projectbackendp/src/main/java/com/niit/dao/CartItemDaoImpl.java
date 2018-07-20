@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.domain.CartItem;
 import com.niit.domain.User;
+@SuppressWarnings({"deprecation","unused"})
 @Repository
 @Transactional
 public class CartItemDaoImpl implements CartItemDao {

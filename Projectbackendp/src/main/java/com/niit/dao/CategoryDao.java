@@ -8,5 +8,5 @@ public interface CategoryDao {
 Category saveOrUpdateCategory(Category category);
 Category getCategory(int cid);
 void deleteCategory(int cid);
-List<Category> getAllCategory();
+List<Category> getAllCategories();
 }

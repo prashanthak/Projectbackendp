@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 public class Customer {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
@@ -15,6 +18,7 @@ private int id;
 private String firstname;
 private String lastname;
 private String phonenumber;
+
 @OneToOne(cascade=CascadeType.ALL)
 private BillingAddress billingaddress;
 @OneToOne(cascade=CascadeType.ALL)

@@ -6,9 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.stereotype.Component;
+
 import com.niit.dao.CategoryDao;
 
 @Entity
+@Component
 public class Category  {
 @Id
 private int cid;

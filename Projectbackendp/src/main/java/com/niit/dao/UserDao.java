@@ -9,7 +9,7 @@ import com.niit.domain.User;
 @Repository("userDao")
 public interface UserDao {
 User saveOrUpdateUser(User user);
-User getUser(int id);
+User getUser(String email);
 void deleteUser(int id);
 
 List<User> getAllUsers();

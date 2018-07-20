@@ -26,51 +26,73 @@
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-validator</artifactId>
-    <version>4.2.0.Final</version>
+    <version>4.3.1.Final</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.21</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-dbcp2</artifactId>
+    <version>2.1.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.3.2</version>
+</dependency>
+
+ 
+ 
 <dependency>
     <groupId>javax.validation</groupId>
     <artifactId>validation-api</artifactId>
     <version>1.0.0.GA</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
-    <version>5.0.6.RELEASE</version>
+    <version>4.3.0.RELEASE</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-core</artifactId>
-    <version>5.0.6.RELEASE</version>
+    <version>4.3.0.RELEASE</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-orm</artifactId>
-    <version>5.0.6.RELEASE</version>
+    <version>4.3.0.RELEASE</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+  
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-context</artifactId>
-    <version>5.0.6.RELEASE</version>
+    <version>4.3.0.RELEASE</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
-    <version>5.3.0.Final</version>
+    <version>4.3.0.Final</version>
 </dependency>
-    <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+
 <dependency>
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
     <version>1.4.196</version>
-    <scope>test</scope>
-</dependency>
+   </dependency>
     <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 <dependency>
     <groupId>commons-io</groupId>
@@ -84,11 +106,11 @@
     <version>2.4.3</version>
 </dependency>
     <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
-<dependency>
+<!-- <dependency>
     <groupId>org.hibernate.javax.persistence</groupId>
     <artifactId>hibernate-jpa-2.0-api</artifactId>
     <version>1.0.1.Final</version>
-</dependency>
+</dependency> -->
     
     
   </dependencies>

@@ -3,9 +3,10 @@ package com.niit.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,18 +22,20 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 	
 	public User saveOrUpdateUser(User user) {
-		System.out.println("ID " + user.getId());//Transient
+		System.out.println("email " + user.getEmail());//Transient
 	    Session session=sessionFactory.getCurrentSession();
 	    session.saveOrUpdate(user);//insert or update based on the value of User id
 	    //Persistent
-	    System.out.println("ID " + user.getId());
+	    System.out.println("email " + user.getEmail());
 	    return user;
 	}
-	public User getUser(int id) {//value of id=4
+	public User getUser(String email) {//value of id=4
 		Session session=sessionFactory.getCurrentSession();
-		User user=(User)session.get(User.class, id);
+		String s="from User where email='"+email+"'";
+		Query q=session.createQuery(s);
+		return (User) q.list().get(0);
 		//SQL - select * from user where id=4
-		return user;
+		
 	}
 	public void deleteUser(int id) {
 		Session session=sessionFactory.getCurrentSession();
