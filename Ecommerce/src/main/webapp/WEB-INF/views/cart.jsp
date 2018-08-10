@@ -22,9 +22,9 @@ Clear Cart
 </thead>
 <c:set var="totalPrice" value="0"></c:set>
 <tbody id="tbody"><!-- cartItems is List<CartItem>, cartItem is CartItem obj -->
-<c:forEach items="${cartItems }" var="cartItem">
+<c:forEach items="${cartItems}" var="cartItem">
 <tr>
-<td>${cartItem.product.productname }</td>
+<td>${cartItem.product.name }</td>
 <td>${cartItem.quantity }</td>
 <td>${cartItem.totalPrice }</td>
 <c:set var="totalPrice" value="${totalPrice + cartItem.totalPrice }"></c:set>
@@ -41,9 +41,11 @@ Clear Cart
 </table>
 Total Price : ${totalPrice }
 </div>
-
-<a href="" class="btn btn-success pull-right">
+<c:if test="${cartSize>0 }">
+<a href="<c:url value='/cart/shippingaddress'/>" class="btn btn-success pull-right">
 <span class="glyphicon glyphicon-shopping-cart"></span> Place Order  </a>
+</c:if>
+
 
 </div>
 </body>

@@ -68,7 +68,7 @@ public class SupplierController {
 				e.printStackTrace();
 			}
 		}
-		return "redirect:/all/getallsupplierS";
+		return "redirect:/all/getallsuppliers";
 	}
 	//http:localhost:8086/projectfrontendp/productform
 	@RequestMapping(value="/admin/getsupplierform")//blank form
@@ -91,9 +91,9 @@ public class SupplierController {
 	
 	//handler method to get new supplier object
 	@RequestMapping(value="/admin/saveorupdatesupplier")
-	public String saveOrUpdateSupplier(@Validated @ModelAttribute(name="supplier") Supplier supplier,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
+	public String saveOrUpdateSupplier(@Validated @ModelAttribute(value="supplier") Supplier supplier,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
 		if(result.hasErrors()){
-			model.addAttribute("categories",categoryDao.getAllCategories());
+			model.addAttribute("suppliers",supplierDao.getAllSuppliers());
 			if(supplier.getSid()==0)//insert
 			return "supplierform";
 			else

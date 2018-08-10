@@ -1,9 +1,16 @@
 package com.niit.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
@@ -11,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
+@Table
 public class Product implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -21,6 +29,24 @@ double price;
 int quantity;
 @Transient
 MultipartFile pimage;
+@ManyToOne
+private Category category;
+
+@ManyToOne
+private Supplier supplier;
+
+public Supplier getSupplier() {
+	return supplier;
+}
+public void setSupplier(Supplier supplier) {
+	this.supplier = supplier;
+}
+public Category getCategory() {
+	return category;
+}
+public void setCategory(Category category) {
+	this.category = category;
+}
 public MultipartFile getPimage() {
 	return pimage;
 }

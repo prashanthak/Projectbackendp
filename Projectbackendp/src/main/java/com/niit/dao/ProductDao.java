@@ -13,4 +13,5 @@ public interface ProductDao {
 	   void deleteProduct(int id);
 	   
 	   List<Product> getAllProducts();
+	   List<Product> getcatproducts(int id,String name);
 }

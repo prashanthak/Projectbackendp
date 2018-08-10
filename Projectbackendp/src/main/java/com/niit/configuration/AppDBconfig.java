@@ -19,6 +19,7 @@ import com.niit.domain.BillingAddress;
 import com.niit.domain.CartItem;
 import com.niit.domain.Category;
 import com.niit.domain.Customer;
+import com.niit.domain.CustomerOrder;
 import com.niit.domain.Payment;
 import com.niit.domain.Product;
 import com.niit.domain.ShippingAddress;
@@ -63,6 +64,7 @@ public class AppDBconfig {
         sessionBuilder.addAnnotatedClass(ShippingAddress.class);
         //sessionBuilder.addAnnotatedClass(Authorities.class);
 	    sessionBuilder.addAnnotatedClass(CartItem.class);
+	    sessionBuilder.addAnnotatedClass(CustomerOrder.class);
        // sessionBuilder.addAnnotatedClass(Feedback.class);
 	    sessionBuilder.addAnnotatedClass(Payment.class);
 	    System.out.println("Database Connected");

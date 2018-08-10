@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security 
+       http://www.springframework.org/schema/security/spring-security.xsd">
+       
+       <!-- New Spring Security implementation -->
+       <context:component-scan base-package="com.niit" />  
+   <!-- <security:http auto-config="true"> -->
+   <security:http use-expressions="true" auto-config="true">
+        <security:csrf disabled="true"/>
+<!-- <security:csrf /> -->
+<!-- /admin/getproductform, /admin/saveproduct -->
+
+<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
+<security:intercept-url pattern="/user/**" access="ROLE_USER"/>
+<!-- home, all/getproducts  -->
+<!-- <security:intercept-url pattern="/**" access="permitAll"/> -->
+
+	
+ <security:form-login 
+      login-page="/login" 
+      
+      username-parameter="j_username" password-parameter="j_password"
+      login-processing-url="/j_spring_security_check"
+      default-target-url="/home"
+      authentication-failure-url="/login?error"
+      />
+      <!-- invalid username/password , redirected to the url /login?error -->
+      <security:logout logout-success-url="/login?logout" logout-url="/j_spring_security_logout" />
+      
+</security:http>
+
+
+
+
+ <security:authentication-manager>
+ <security:authentication-provider>
+ <!-- <security:user-service>
+   			<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
+   			<security:user name="sait" password="sait" authorities="ROLE_ADMIN" />
+   			<security:user name="niit" password="niit" authorities="ROLE_ADMIN" />
+   			<security:user name="anilk@gmail.com" password="sanju" authorities="ROLE_USER" /> 
+   			<security:user name="disha" password="disha" authorities="ROLE_USER" /> 
+   			</security:user-service> -->
+   			 
+ <security:jdbc-user-service data-source-ref="dataSource"
+  users-by-username-query="select email,password,enabled from User where email=?" 
+  authorities-by-username-query="select email,role from User where email=?" />
+ </security:authentication-provider>
+ 
+ 
+ </security:authentication-manager>
+ </beans>

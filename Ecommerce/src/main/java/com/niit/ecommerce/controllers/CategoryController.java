@@ -35,6 +35,9 @@ public class CategoryController {
 		//categoriesAttr            categories [list of category objects]
 		return new ModelAndView("categorylist","categoriesAttr",categories);
 	}
+	
+	
+		
 	@RequestMapping(value="/all/getcategory/{id}")
 	public ModelAndView getCategory(@PathVariable int id){
 		Category category=categoryDao.getCategory(id);
@@ -78,7 +81,7 @@ public class CategoryController {
 	
 	//handler method to get new category object
 	@RequestMapping(value="/admin/saveorupdatecategory")
-	public String saveOrUpdateCategory(@Validated @ModelAttribute(name="category") Category category,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
+	public String saveOrUpdateCategory(@Validated @ModelAttribute(value="category") Category category,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
 		if(result.hasErrors()){
 			//model.addAttribute("categories",productDao.getAllCategories());
 			if(category.getCid()==0)//insert
@@ -87,25 +90,9 @@ public class CategoryController {
 				return "updatecategoryform";
 		}
 		System.out.println("Category Id in SaveCategory method " + category.getCid());
-//        String rootContext= request.getServletContext().getRealPath("/");
-//        //........ project1frontend
-//        System.out.println(rootContext);
-        
+
 		categoryDao.saveOrUpdateCategory(category);
-		
-//		Path paths=Paths.get(rootContext + "/WEB-INF/resources/images/"+product.getId()+".png");
-//		//MultipartFile productImage=product.getImage();
-//		//if(productImage!=null && !categoryImage.isEmpty()){
-//			try {
-//			//	productImage.transferTo(new File(paths.toString()));
-//			} catch (IllegalStateException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} //catch (IOException e) {
-				// TODO Auto-generated catch block
-			//	e.printStackTrace();
-			//}
-		//}
+				
 		return "redirect:/all/getallcategories";
 	}
 }

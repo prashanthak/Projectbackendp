@@ -52,6 +52,22 @@ public List<Category> getAllCategories() {
 	return categories;
 }
 
+public Category getByName(String name)
+{
+	String hql = " from Category where categoryname = " + "'" + name + "'";
+	
+	@SuppressWarnings("rawtypes")
+	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	
+	@SuppressWarnings("unchecked")
+	List<Category> listCategory = query.list();
+	
+	if(listCategory!=null || !listCategory.isEmpty())
+	{
+		return listCategory.get(0);
+	}
+	return null;
+}
 
 }
 

@@ -43,28 +43,37 @@
 		<li><a href="<c:url value='/home'></c:url>">Home</a></li>
 		<li><a href="<c:url value='/aboutus'></c:url>">About Us</a>
 		
-		<security:authorize access="hasRole('ROLE_ADMIN')">
+		<%--  < <security:authorize access="ROLE_ADMIN"> --%>
+		<c:if test="${pageContext.request.userPrincipal.name =='ram@gmail.com'}">
 		<li><a href="<c:url value='/admin/getproductform'></c:url>">Add Product</a></li><!-- productform -->
-		</security:authorize>
+		<li><a href="<c:url value='/admin/updateproductform/{id}'></c:url>">Update Product</a></li>
+		<li><a href="<c:url value='/admin/getsupplierform'></c:url>">Add Supplier</a></li><!-- productform -->
+		
+		<li><a href="<c:url value='/admin/getcategoryform'></c:url>">Add Category</a></li><!-- productform -->
+		</c:if>
 		
 		<li><a href="<c:url value='/all/getallproducts'></c:url>">Browse all products</a><li>
 		<li class="dropdown"> 
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Select by category<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-			<li><a href="">Mobiles</a></li>
-			<li><a href="">Laptop</a></li>
-			<li><a href="">Books</a></li>
+			<c:forEach items="${categoriesAttr}" var="c">
+			<li><a href="<c:url value='/all/getcatproducts/${c.cid}/${c.categoryname}'></c:url>">${c.categoryname}</a></li>
+			</c:forEach>
 			</ul>
 			</li>
 			
-		<c:if test="${pageContext.request.userPrincipal.name ==null}"><!-- check if principal object is null -->
+		<c:if test="${pageContext.request.userPrincipal.name==null}"><!-- check if principal object is null -->
 		<li><a href="<c:url value='/all/registrationform'></c:url>">SignUp</a></li>
 		<li><a href="<c:url value='/login'></c:url>">Sign In</a></li>
 		</c:if>
 		<c:if test="${pageContext.request.userPrincipal.name!=null }">
 		<li><a>Welcome ${pageContext.request.userPrincipal.name }</a></li>
+		<c:if test="${pageContext.request.userPrincipal.name!='admin'}">
 		<li><a href="<c:url value='/cart/purchasedetails'></c:url>"><span class="glyphicon glyphicon-shopping-cart"></span>(${sessionScope.cartSize })</a></li>
-		<li><a href="<c:url value='/j_spring_security_logout'></c:url>">Sign out</a></li>
+		</c:if>
+		<%-- <li><a href="<c:url value="/j_spring_security_logout"></c:url>">Sign out</a></li> --%>
+		<a href="<c:url value="/logout" />" > Logout</a>
+		<!-- <li><a href="j_spring_security_logout"><button class="btn btn-danger navbar-btn"><span class="glyphicon glyphicon-log-out"></span> Log out</button></a></li> -->
 		</c:if>
 		</ul>
 		</div>

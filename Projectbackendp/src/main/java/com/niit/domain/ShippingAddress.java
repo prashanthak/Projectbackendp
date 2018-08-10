@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.springframework.stereotype.Component;
 @Entity
@@ -18,6 +19,14 @@ private String city;
 private String state;
 private String country;
 private String zipcode;
+@OneToOne(mappedBy="shippingaddress")
+private Customer customer;
+public Customer getCustomer() {
+	return customer;
+}
+public void setCustomer(Customer customer) {
+	this.customer = customer;
+}
 public int getId() {
 	return id;
 }

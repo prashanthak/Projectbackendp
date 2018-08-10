@@ -11,6 +11,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.niit.domain.Category;
+import com.niit.domain.Customer;
 import com.niit.domain.Product;
 
 @SuppressWarnings({"deprecation","unused"})
@@ -49,6 +51,23 @@ public class ProductDaoImpl implements ProductDao {
 			Query query=session.createQuery("from Product");//Product is name of the Entity
 			List<Product> products=query.list();
 			return products;
+		}
+		
+		public List<Product> getcatproducts(int id,String name)
+		{
+			System.out.println("filtering products based on category");
+			Session s=sessionFactory.getCurrentSession();			
+//			String s1="from Category where cid="+id;
+//			Category c=s.createQuery(s1).list().get(0);
+//			Category c=(Category) s.get(Category.class, id);
+//			c.getCategoryname();
+			String s2="from Product where category.cid="+id;
+			List<Product> plist=s.createQuery(s2).list();
+			for(Product p:plist)
+			{
+				System.out.println(p.getName());
+			}
+			return plist;
 		}
 
 }

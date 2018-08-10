@@ -12,21 +12,22 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <a href="#home" class="w3-bar-item w3-button">Ewayhome</a>
+    <a href="#home" class="w3-bar-item w3-button"> </a>
     <!-- Right-sided navbar links. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <<!-- a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="#product" class="w3-bar-item w3-button">Product</a>
-      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a> -->
     </div>
   </div>
 </div>
 
 <!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
-  <img class="w3-image" src="/resources/images/welcomenew.jpg" alt="Ewayhome" width="1600" height="800">
-  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+<!-- <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="" alt=" " width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity"> -->
     <h1 class="w3-xxlarge">Ewayhome</h1>
+    <p>We are one of the leading e-commerce company in India.Our's service is being appreciated by all the customers.</p>
   </div>
 </header>
 
@@ -36,13 +37,12 @@
   <!-- About Section -->
   <div class="w3-row w3-padding-64" id="about">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
-     <img src="/resources/images/mobilenew2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
-    </div>
+     
 
     <div class="w3-col m6 w3-padding-large">
       <h1 class="w3-center">About Ewayhome</h1><br>
       <h5 class="w3-center">Tradition since 2018</h5>
-      <p class="w3-large">The Ewayhome<span class="w3-tag w3-light-grey">seasonal</span> products.</p>
+      
       <p class="w3-large w3-text-grey w3-hide-medium">Ewayhome.</p>
     </div>
   </div>

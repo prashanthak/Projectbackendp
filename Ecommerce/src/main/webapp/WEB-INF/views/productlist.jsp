@@ -18,6 +18,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th></th>
 				<th>Product name</th>
 				<th>Price</th>
 			</tr>
@@ -26,13 +27,19 @@
 		<!-- JSTL tag for iterating list of products -->
 		<c:forEach items="${productsAttr}" var="p"><!-- p is referring to Product -->
 			<tr>
+			
 			<td><img src="<c:url value='/resources/images/${p.id}.png'></c:url>" alt="Some image here"/></td>
 				<td>${p.name}</td><!-- p.getProductName() -->
 				<td>${p.price }</td><!-- p.getPrice() -->
+				
 			<!-- pass the value of product id to the product controller  -->
 				<td><a href="<c:url value='/all/getproduct/${p.id }'></c:url>">
 				<span class="glyphicon glyphicon-info-sign"></span></a>
+				<c:if test="${pageContext.request.userPrincipal.name=='ram@gmail.com' }">
 				<a href="<c:url value='/admin/deleteproduct/${p.id }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+				<a href="<c:url value='/admin/updateproductform/${p.id }'></c:url>">
+				<span class="glyphicon glyphicon-edit"></span></a>
+				</c:if>
 			</td>
 			</tr>
 		</c:forEach>

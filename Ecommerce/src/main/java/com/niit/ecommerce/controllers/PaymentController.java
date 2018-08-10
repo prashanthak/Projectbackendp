@@ -92,7 +92,7 @@ public class PaymentController {
 	
 	//handler method to get new product object
 	@RequestMapping(value="/admin/saveorupdatepayment")
-	public String saveOrUpdatePayment(@Validated @ModelAttribute(name="payment") Payment payment,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
+	public String saveOrUpdatePayment(@Validated @ModelAttribute(value="payment") Payment payment,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
 		
 		System.out.println("Payment Id in SavePayment method " + payment.getPayment_id());
         

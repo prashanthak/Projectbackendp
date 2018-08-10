@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.domain.CartItem;
+import com.niit.domain.CustomerOrder;
 import com.niit.domain.User;
 @SuppressWarnings({"deprecation","unused"})
 @Repository
@@ -47,8 +48,11 @@ public class CartItemDaoImpl implements CartItemDao {
 
 		@Override
 		public User getUser(String email) {
-			// TODO Auto-generated method stub
-			return null;
+			String s="from User where email='"+email+"'";
+			Query q=sessionFactory.getCurrentSession().createQuery(s);
+			List<User> ulist=q.list();
+			return ulist.get(0);
 		}
 
+		
 	}

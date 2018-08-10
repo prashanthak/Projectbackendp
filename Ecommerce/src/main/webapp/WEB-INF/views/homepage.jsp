@@ -72,8 +72,10 @@
 <img  width="200" height="300" src="<c:url value='/resources/images/${p.id}.png'></c:url>" />
 <p>Name: ${p.name}</p>
 <p>Price: ${p.price}</p>
-<p><input type="button" value="Add to Cart"/></p>
-<p><input type="button" value="Buy Now"/></p>
+<p><a href="<c:url value='/cart/addtocart/${p.id}'/>"><input type="button" value="Add to Cart"/></p>
+
+<p><a href="<c:url value='/cart/addtocart/${p.id}?requestedQuantity=1'/>"><input type="button" value="Buy Now"/></p>
+
 </div>
 </c:forEach>
 </div>

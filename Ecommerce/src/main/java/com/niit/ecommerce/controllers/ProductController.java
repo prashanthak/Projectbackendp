@@ -23,24 +23,39 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.dao.CategoryDao;
 import com.niit.dao.ProductDao;
+import com.niit.dao.SupplierDao;
+import com.niit.domain.Category;
 import com.niit.domain.Product;
+import com.niit.domain.Supplier;
 @Controller
 public class ProductController {
 	@Autowired
 	private ProductDao productDao;
 	@Autowired
 	CategoryDao categoryDao;
+	@Autowired
+	SupplierDao supplierDao;
 	
 	//http:localhost:8086/Ecommerce/all/getallproducts
 	@RequestMapping(value="/all/getallproducts")
-	public ModelAndView getAllProducts(){
+	public ModelAndView getAllProducts(Model m)
+	{
 		List<Product> products=productDao.getAllProducts();//select * from product
-		//Model is like map
-		//Key and Value pair
-		//Key                     Value
-		//productsAttr            products [list of product objects]
+		
+		List<Category> categories=categoryDao.getAllCategories();
+		m.addAttribute("categoriesAttr",categories);
+		
 		return new ModelAndView("productlist","productsAttr",products);
 	}
+	
+	@RequestMapping(value="/all/getcatproducts/{cid}/{name}")
+	public ModelAndView getAllProducts(@PathVariable("cid") int cid,@PathVariable("name") String name){
+		System.out.println("Filtering products in controller");
+		List<Product> products=productDao.getcatproducts(cid,name);//select * from product
+		
+		return new ModelAndView("productlist","productsAttr",products);
+	}
+	
 	@RequestMapping(value="/all/getproduct/{id}")
 	public ModelAndView getProduct(@PathVariable int id){
 		Product product=productDao.getProduct(id);
@@ -71,6 +86,7 @@ public class ProductController {
 		//2. categories =List<Category>
 		model.addAttribute("product",new Product());
 		model.addAttribute("categories",categoryDao.getAllCategories());
+		model.addAttribute("suppliers",supplierDao.getAllSuppliers());
 		return "productform";
 	}
 	
@@ -84,7 +100,7 @@ public class ProductController {
 	
 	//handler method to get new product object
 	@RequestMapping(value="/admin/saveorupdateproduct")
-	public String saveOrUpdateProduct(@Validated @ModelAttribute(name="product") Product product,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
+	public String saveOrUpdateProduct(@Validated @ModelAttribute(value="product") Product product,BindingResult result ,Model model,HttpServletRequest request){//input from jsp pages
 		if(result.hasErrors()){
 			model.addAttribute("categories",categoryDao.getAllCategories());
 			if(product.getId()==0)//insert
@@ -96,7 +112,15 @@ public class ProductController {
         String rootContext= request.getSession().getServletContext().getRealPath("/");
         //........ project1frontend
         System.out.println(rootContext);
-        
+        Category category = categoryDao.getByName(product.getCategory().getCategoryname());
+		categoryDao.saveOrUpdateCategory(category);
+		
+		Supplier supplier = supplierDao.getByName(product.getSupplier().getSuppliername());
+		supplierDao.saveOrUpdateSupplier(supplier);
+		
+		product.setCategory(category);
+		product.setSupplier(supplier);
+	
 		productDao.saveOrUpdateProduct(product);
 		
 		Path paths=Paths.get(rootContext + "\\WEB-INF\\resources\\images\\"+product.getId()+".png");

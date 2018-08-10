@@ -10,23 +10,16 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<!-- spring form tag -->
-<!-- product=new Product()assigned in ProductController
-product.getProductname()=null
-product.getDescription()=null,price is 0,quantity is 0,id is 0
- -->
- <!-- url is a variable
- url=/admin/saveproduct
- url="http://localhost:8080/Projectfrontendp/admin/saveproduct
-  -->
+
   <c:url value='/admin/saveorupdateproduct' var="url"></c:url>
-  <form:form method="post" modelAttribute="product" action="${url}" enctype="multipart/form-data">
+  <form:form method="post" modelAttribute="product" action="${url}?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
   <table>
   <tr>
   <td><form:label path="id">Enter Product ID</form:label>
   </td>
   <td><form:input path="id"/></td>
   </tr>
+  
   <td><form:label path="name">Enter Product Name</form:label>
   </td>
   <td><form:input path="name"/>
@@ -52,6 +45,16 @@ product.getDescription()=null,price is 0,quantity is 0,id is 0
 				<td><form:input path="quantity" />
 				<form:errors path="quantity" cssStyle="color:red"></form:errors></td>
 			</tr>
+			
+			<tr>
+	<td><form:label path="supplier.suppliername" >Supplier</form:label></td>
+	<td><form:select path="supplier.suppliername" cssClass="form-control" items="${suppliers}" itemLabel="suppliername" itemValue="suppliername"></form:select></td>
+	</tr>
+	<tr>
+	<td><form:label path="category.categoryname">Category</form:label></td>
+	<td><form:select path="category.categoryname" cssClass="form-control" items="${categories}" itemLabel="categoryname" itemValue="categoryname"></form:select></td>
+      </tr>
+			
 			<tr>
 			<td>
 Select File:</td>
@@ -66,6 +69,7 @@ Select File:</td>
 				<td><input type="submit" value="Add Product"/></td>
 			</tr>
 		</table>
+	
 	</form:form>
 </body>
 </html>
